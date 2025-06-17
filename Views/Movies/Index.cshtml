@@ -1,0 +1,47 @@
+﻿@model MovieUser
+
+@{
+    ViewData["Title"] = "Movie List";
+}
+
+<h1>Movie List</h1>
+<H2>Username: @Model.User?.Username</H2>
+
+<p><a asp-action="Create" class="btn btn-success">Add New</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>Genre</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in Model.Movies)
+    {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@movie.ReleaseDate.ToShortDateString()</td>
+            <td>@movie.Genre</td>
+            <td>@movie.Price</td>
+            <td>
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@movie.Id">Details</a>
+                <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@movie.Id">Edit</a>
+                @* <a asp-action="Delete" asp-route-id="@movie.Id">Delete</a> *@
+                <form asp-action="Delete" asp-route-id="@movie.Id" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+@* @section Scripts {
+    <script>
+        console.log("Hello World")
+    </script>
+} *@
