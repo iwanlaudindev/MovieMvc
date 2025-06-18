@@ -5,6 +5,7 @@ namespace MvcMovie.Models;
 
 public class Movie
 {
+    [Key]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Title harus diisi.")]
@@ -18,17 +19,8 @@ public class Movie
     [Required]
     public string? Genre { get; set; }
 
-    public Genre? GenreObject { get; set; }
-
     [Range(1, 100)]
     public decimal Price { get; set; }
     // [Required]
     public DateTime CreatedAt { get; set; }
-}
-
-
-public class Genre
-{
-    public int Id { get; set; }
-    public string? Titel { get; set; }
 }

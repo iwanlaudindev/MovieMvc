@@ -1,0 +1,39 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Detail Student";
+}
+
+<h1>Detail Student</h1>
+
+
+<h1>Movie Details</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+
+        <dt class="col-sm-2">Age</dt>
+        <dd class="col-sm-10">@Model.Age</dd>
+        <dd class="col-sm-10"></dd>
+            @if (Model.Hobbies != null && Model.Hobbies.Any())
+            {
+                <ul>
+                    @foreach (var hobby in Model.Hobbies)
+                    {
+                        <li>@hobby.Name</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span class="text-muted">No hobbies</span>
+            }
+        </dd>
+    </dl>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
