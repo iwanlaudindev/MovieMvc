@@ -19,6 +19,9 @@ public class Student
     [Range(18, 60, ErrorMessage = "Usia harus antara 18 dan 60.")]
     public int Age { get; set; }
 
+    // Relasi ke StudentAddres
+    public ICollection<StudentAddres> StudentAddreses { get; set; } = [];
+
     // Relasi ke Hobby
     public ICollection<Hobby> Hobbies { get; set; } = new List<Hobby>();
     
